@@ -20,6 +20,19 @@ app.post('/chickens', function postChicken(req, res) {
     res.send('You posted a chicken!')
 })
 
+const greetings = {
+    en: 'hello',
+    fr: 'bonjour',
+    no: 'hallo',
+    jp: 'konnichiwa'
+}
+
+app.get('/greet/:language', (req, res) => {
+    const lang = req.params.language
+    const greeting = greetings[lang]
+    res.send(`<h1>${greeting}</h1>`)
+})
+
 app.listen(3000, () => {
     console.log('App running on server 3000');
 })

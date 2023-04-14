@@ -48,3 +48,7 @@ Wrapper for node that will stop and restart server when it detects a change to t
 - npm install --global nodemon
 - nodemon -v to check version
 - nodemon app.js to run server
+
+# URL Parameters
+Specify parameter by prefixing with ':'
+- app.get('/:name', callback)
