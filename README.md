@@ -52,3 +52,6 @@ Wrapper for node that will stop and restart server when it detects a change to t
 # URL Parameters
 Specify parameter by prefixing with ':'
 - app.get('/:name', callback)
+
+# Return
+Express does not need functions to return a value but JavaScript will stop executing code after a return, which can prevent errors.

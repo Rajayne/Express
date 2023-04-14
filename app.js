@@ -33,6 +33,13 @@ app.get('/greet/:language', (req, res) => {
     res.send(`<h1>${greeting}</h1>`)
 })
 
+// If route /search?term=dog&sort=top
+// returns term: dog | sort: top
+app.get('/search', (req, res) => {
+    const {term, sort} = req.query;
+    res.send(`<h2>Term: ${term} | Sort: ${sort}</h2>`)
+})
+
 app.listen(3000, () => {
     console.log('App running on server 3000');
 })
