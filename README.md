@@ -4,6 +4,7 @@
 - doesn't do anything but respond 404s
 - indicates server is running!
 - takes a port and callback: app.listen(port, function)
+- if port is 3000, will host server on localhost:3000
 - should always be at the bottom of a file
 
 # Route Handlers
@@ -22,3 +23,8 @@ Event listeners similar to Flask view functions:
     app.get('/dogs', function(request, response) { 
         return response.send('Bark') 
     })
+
+# Request and Response
+Every handler should have a callback with two parameters:
+- request: information about a request i.e. query string, url parameters, form data
+- response: methods for sending a response i.e. html, text, json
