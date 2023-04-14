@@ -14,6 +14,7 @@ Event listeners similar to Flask view functions:
 
     @app.route('/dogs) def bark(): return 'Bark'
 
-    - Express: const express = require('express'); const app = express();
+    - Express: const express = require
+    ('express'); const app = express();
 
     app.get('/dogs', function(request, response) { return response.send('Bark') })
