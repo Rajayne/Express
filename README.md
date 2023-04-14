@@ -28,3 +28,23 @@ Event listeners similar to Flask view functions:
 Every handler should have a callback with two parameters:
 - request: information about a request i.e. query string, url parameters, form data
 - response: methods for sending a response i.e. html, text, json
+
+# Request-Response Cycle
+- Express registers all event listeners BEFORE app.listen
+- Express will invoke the FIRST matching route handler it finds until a response is issued i.e. if there are two identical routes, only the first will run
+
+# Route Methods
+- app.get
+- app.post
+- app.put
+- app.patch
+- app.delete
+
+# Route Callbacks
+- Can use arrow function () => or named function, or define standalone function and pass in as callback
+
+# Nodemon
+Wrapper for node that will stop and restart server when it detects a change to the file
+- npm install --global nodemon
+- nodemon -v to check version
+- nodemon app.js to run server
