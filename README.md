@@ -53,5 +53,11 @@ Wrapper for node that will stop and restart server when it detects a change to t
 Specify parameter by prefixing with ':'
 - app.get('/:name', callback)
 
+# Request Properties
+- Query String (request.query)
+- Headers (request.headers)
+- Body (request.body)
+    In order to capture request.body content, must include app.use() to parse
+
 # Return
 Express does not need functions to return a value but JavaScript will stop executing code after a return, which can prevent errors.

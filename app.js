@@ -2,6 +2,11 @@ const express = require('express');
 
 const app = express();
 
+// Tells express to parse request bodies for json
+app.use(express.json());
+// Tells express to parse request bodies for form data
+app.use(express.urlencoded({extended: true}));
+
 app.get('/', (req, res) => {
     console.log('Home Page!')
     res.send('<h1>Home Page!</h1>')
@@ -38,6 +43,21 @@ app.get('/greet/:language', (req, res) => {
 app.get('/search', (req, res) => {
     const {term, sort} = req.query;
     res.send(`<h2>Term: ${term} | Sort: ${sort}</h2>`)
+})
+
+// rawHeaders is an array of objects as strings
+app.get('/headers', (req, res) => {
+    console.log(req.rawHeaders);
+    res.send(req.headers);
+})
+
+app.get('/show-language', (req, res) => {
+    const lang = req.headers['accept-language'];
+    res.send(`Your language preference is: ${lang}`);
+})
+
+app.post('/register', (req, res) => {
+    res.send(`Welcome, ${req.body.username}`);
 })
 
 app.listen(3000, () => {
