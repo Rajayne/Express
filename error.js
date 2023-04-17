@@ -1,5 +1,6 @@
 const express = require('express');
 const ExpressError = require('./expressError')
+const middleware = require('./middleware')
 const app = express();
 
 app.use(express.json());
@@ -32,15 +33,23 @@ app.get('/users/:username', function(req, res, next) {
     }
 })
 
-app.get('/secret', (req, res, next) => {
-    try {
-        if (req.query.password != "popcorn") {
-            throw new ExpressError("Invalid Password!", 403);
-        }
-        return res.send("Congrats, you know the password!")
-    } catch (e) {
-        next(e);
-    }
+// app.get('/secret', (req, res, next) => {
+//     try {
+//         if (req.query.password != "popcorn") {
+//             throw new ExpressError("Invalid Password!", 403);
+//         }
+//         return res.send("Congrats, you know the password!")
+//     } catch (e) {
+//         next(e);
+//     }
+// })
+
+app.get('/secret', middleware.checkPassword, (req, res, next) => {
+    return res.send("Congrats, you know the password!")
+})
+
+app.get('/private', middleware.checkPassword, (req, res, next) => {
+    return res.send("Welcome to the private page!")
 })
 
 app.get('/savetodb', (req, res) => {
