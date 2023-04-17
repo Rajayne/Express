@@ -3,7 +3,7 @@ const router = new express.Router();
 
 const USERS = [
     {id: 1, username: "Rajayne"},
-    {id: 1, username: "Rajayne"}]
+    {id: 2, username: "ATVDown"}]
 
 router.get('/', (req, res) => {
     res.json({users: USERS})

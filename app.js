@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = require('./routes');
+const middleware = require('./middleware')
 
 const app = express();
 
@@ -8,7 +9,9 @@ app.use(express.json());
 // Tells express to parse request bodies for form data
 app.use(express.urlencoded({extended: true}));
 
-/* Sets root route to /users */
+app.use(middleware.logger);
+
+/* Sets root route to /users for routes.js */
 app.use('/users', routes)
 
 app.get('/', (req, res) => {
