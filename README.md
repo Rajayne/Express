@@ -1,4 +1,5 @@
 # Express
+Node provides a runtime environment to run JavaScript outside of the browser.
 
 # App.listen
 - doesn't do anything but respond 404s
@@ -61,3 +62,6 @@ Specify parameter by prefixing with ':'
 
 # Return
 Express does not need functions to return a value but JavaScript will stop executing code after a return, which can prevent errors.
+
+# Error Handling
+Express default when error is raised/thrown is callback stops running and returns error text with status code 500.  Alternatively, create own error class.
