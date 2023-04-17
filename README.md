@@ -58,10 +58,20 @@ Specify parameter by prefixing with ':'
 - Query String (request.query)
 - Headers (request.headers)
 - Body (request.body)
-    In order to capture request.body content, must include app.use() to parse
+    In order to capture request.body content, must include app.use() to parse (middleware)
+
+# Express Middleware
+App.use() runs a callback on every request.
+When defining route parameter, able to call next (req, res, next), can execute next() to prevent app.use from stopping rest of code from executing.
+- app.use(res, req) => {console.log("Request sent!)} will console.log for every route get but won't execute code below it
+- app.use(res, req, next) => {console.log("Request sent!); next();} returns next executable code
 
 # Return
 Express does not need functions to return a value but JavaScript will stop executing code after a return, which can prevent errors.
 
 # Error Handling
 Express default when error is raised/thrown is callback stops running and returns error text with status code 500.  Alternatively, create own error class.
+Rules of error handling:
+    1. Should be at the bottom of file because any handlers defined above can potentially throw erors
+    2. Should match every HTTP verb and path: app.use(callback)
+    3. Callback signature to error handlers has four parameters: function(err, req, res, next)
