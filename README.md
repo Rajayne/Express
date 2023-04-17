@@ -82,3 +82,7 @@ Use command node --inspect-brk file.js || nodemon --inspect-brk file.js
 Alternatively can use command  node --inspect file.js || nodemon --inspect file.js
     - Must include "debugger;" to activate breakpoint and will open debug window automatically when running code 
     - i.e. app.get('/', function() {debugger; return}) will  pause and open devtools when routing to home page
+
+# Express Routing
+Create routes file with const router = new express.Router();
+- Require the router in another file and tell it what prefix to use

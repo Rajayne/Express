@@ -1,4 +1,5 @@
 const express = require('express');
+const routes = require('./routes');
 
 const app = express();
 
@@ -6,6 +7,9 @@ const app = express();
 app.use(express.json());
 // Tells express to parse request bodies for form data
 app.use(express.urlencoded({extended: true}));
+
+/* Sets root route to /users */
+app.use('/users', routes)
 
 app.get('/', (req, res) => {
     console.log('Home Page!')
