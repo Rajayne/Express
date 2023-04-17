@@ -75,3 +75,10 @@ Rules of error handling:
     1. Should be at the bottom of file because any handlers defined above can potentially throw erors
     2. Should match every HTTP verb and path: app.use(callback)
     3. Callback signature to error handlers has four parameters: function(err, req, res, next)
+
+# Debugging Express
+Use command node --inspect-brk file.js || nodemon --inspect-brk file.js
+    - Go to server browser and select Node Code
+Alternatively can use command  node --inspect file.js || nodemon --inspect file.js
+    - Must include "debugger;" to activate breakpoint and will open debug window automatically when running code 
+    - i.e. app.get('/', function() {debugger; return}) will  pause and open devtools when routing to home page

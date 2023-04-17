@@ -48,8 +48,21 @@ app.get('/savetodb', (req, res) => {
     res.send("Saved to DB!")
 })
 
+/* Generic 404 at the end of routes, before other error handling
+If no route found before it, will return 404 Page Not Found */
+app.use((req, res, next) => {
+    const e = new ExpressError("Page Not Found", 404)
+    next(e);
+})
+
 app.use((err, req, res, next) => {
-    res.status(err.status).send(err.message);
+    // default status is 500 Internal Server Error
+    let status = err.status || 500;
+    let message = err.message;
+
+    return res.status(status).json({
+        error: {message, status}
+    });
 })
 
 app.listen(3000, () => {
