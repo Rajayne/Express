@@ -18,9 +18,8 @@ function attemptToSaveToDB() {
 }
 
 USERS = [
-    {username: "Raja", city: "Sacramento"},
-    {username: "ATVDown", city: "Sacramento"},
-    {username: "OmegaMagus", city: "Boston"}
+    {id: 1, username: "Rajayne"},
+    {id: 2, username: "ATVDown"}
 ];
 
 app.get('/users/:username', function(req, res, next) {
@@ -74,6 +73,4 @@ app.use((err, req, res, next) => {
     });
 })
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-})
+module.exports = USERS;

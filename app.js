@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 const middleware = require('./middleware')
+const morgan = require('morgan')
 
 const app = express();
 
@@ -9,7 +10,8 @@ app.use(express.json());
 // Tells express to parse request bodies for form data
 app.use(express.urlencoded({extended: true}));
 
-app.use(middleware.logger);
+// app.use(middleware.logger);
+app.use(morgan('dev'));
 
 /* Sets root route to /users for routes.js */
 app.use('/users', routes)
@@ -67,6 +69,4 @@ app.post('/register', (req, res) => {
     res.send(`Welcome, ${req.body.username}`);
 })
 
-app.listen(3000, () => {
-    console.log('App running on server 3000');
-})
+module.exports = app;

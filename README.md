@@ -86,3 +86,22 @@ Alternatively can use command  node --inspect file.js || nodemon --inspect file.
 # Express Routing
 Create routes file with const router = new express.Router();
 - Require the router in another file and tell it what prefix to use
+
+# Middleware
+- Code that runs in the middle of a request/response cycle
+- Has request, response, next params
+- Can incorporate external middleware like Morgan for logging
+
+# Testing with SuperTest
+- Integration test: npm install --save-dev supertest
+- Allows user to make requests and test content
+- Must export app from app.js and put app.listen in different file (server.js) to run tests
+- Write tests in third file i.e. app.test.js
+- Include: process.env.NODE_ENV = "test" at the top of test file
+
+# What to Test:
+- Getting all users
+- Getting a single user
+- Deleting a user
+- Adding a user
+- Test for duplicates/not found
